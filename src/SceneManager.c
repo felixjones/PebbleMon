@@ -14,12 +14,20 @@ typedef struct sceneList_s {
 static sceneList_t *	stackTop = NULLPTR;
 static AppTimer *		updateTimer = NULLPTR;
 
+static void SceneManager_Run( void * userPtr ) {
+	if ( stackTop ) {
+		SceneBase_Update( stackTop->scene );
+	}
+
+	updateTimer = app_timer_register( 500, SceneManager_Run, NULLPTR );
+}
+
 static void SceneManager_Prepare() {
 	if ( !stackTop && updateTimer ) {
 		app_timer_cancel( updateTimer );
 		updateTimer = NULLPTR;
 	} else {
-		updateTimer = app_timer_register( 500, ( sceneUpdate_t )stackTop->scene->__vtable.Update_f, stackTop->scene );
+		updateTimer = app_timer_register( 500, SceneManager_Run, NULLPTR );
 	}
 }
 
@@ -74,11 +82,6 @@ void SceneManager_Call( xiSceneBase_t * const scene ) {
 }
 
 void SceneManager_Exit() {
-	if ( updateTimer ) {
-		app_timer_cancel( updateTimer );
-		updateTimer = NULLPTR;
-	}
-
 	window_stack_pop_all( FALSE );
 
 	while ( stackTop ) {
@@ -89,6 +92,8 @@ void SceneManager_Exit() {
 
 		stackTop = newTop;
 	}
+	
+	SceneManager_Prepare();
 }
 
 xiSceneBase_t * SceneManager_Scene() {
