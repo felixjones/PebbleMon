@@ -39,11 +39,11 @@ def build(ctx):
     if js_paths:
         ctx.exec_command(['cat'] + js_paths, stdout=open('src/js/pebble-js-app.js', 'a'))
 
-    ctx.load('pebble_sdk')
+    #ctx.load('pebble_sdk')
 
-    ctx.pbl_program(source=ctx.path.ant_glob('src/**/*.c'),
+    #ctx.pbl_program(source=ctx.path.ant_glob('src/**/*.c'),
                     target='pebble-app.elf')
 
-    ctx.pbl_bundle(elf='pebble-app.elf',
+    #ctx.pbl_bundle(elf='pebble-app.elf',
                    js=ctx.path.ant_glob('src/js/**/*.js'))
 
