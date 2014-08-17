@@ -1,8 +1,7 @@
 #ifndef __MEMORY_H__
 #define __MEMORY_H__
 
-#include <stdint.h>
-#include "Bool.h"
+#include "intdef.h"
 
 #define NULLPTR	( ( void * )0 )
 

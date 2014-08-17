@@ -76,7 +76,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\src\Bool.h" />
+    <ClInclude Include="..\src\intdef.h" />
     <ClInclude Include="..\src\Memory.h" />
     <ClInclude Include="..\src\Object.h" />
   </ItemGroup>

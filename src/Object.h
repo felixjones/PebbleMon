@@ -1,7 +1,7 @@
 #ifndef __OBJECT_H__
 #define __OBJECT_H__
 
-#include <stdint.h>
+#include "intdef.h"
 
 typedef struct xiObject_s {
 	int8_t	retainCount;

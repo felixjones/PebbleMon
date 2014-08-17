@@ -15,7 +15,7 @@
     <ClInclude Include="..\src\Memory.h">
       <Filter>src\lib</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\Bool.h">
+    <ClInclude Include="..\src\intdef.h">
       <Filter>src\lib</Filter>
     </ClInclude>
   </ItemGroup>
