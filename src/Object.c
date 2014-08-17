@@ -28,16 +28,16 @@ xiObject_t * Object_Init( xiObject_t * const self ) {
 	return self;
 }
 
-void Object_Retain( const xiObject_t * const self ) {
+void Object_Retain( const void * const self ) {
 	xiObject_t * const mutableSelf = ( xiObject_t * )self;
 	mutableSelf->retainCount++;
 }
 
-void Object_Release( const xiObject_t * const self ) {
+void Object_Release( const void * const self ) {
 	xiObject_t * const mutableSelf = ( xiObject_t * )self;
 	mutableSelf->retainCount--;
 
-	if ( self->retainCount == 0 ) {
+	if ( mutableSelf->retainCount == 0 ) {
 		Object_Dealloc( self );
 	}
 }

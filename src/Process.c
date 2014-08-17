@@ -5,7 +5,7 @@
 static void Process_Dealloc( xiProcess_t * const self ) {
 	// Cleanup
 
-	Object_Dealloc( self );
+	Object_Dealloc( ( xiObject_t * )self );
 }
 
 xiProcess_t * Process_Alloc() {
@@ -13,7 +13,7 @@ xiProcess_t * Process_Alloc() {
 }
 
 xiProcess_t * Process_Init( xiProcess_t * const self ) {
-	Object_Init( self );
+	Object_Init( ( xiObject_t * )self );
 
 	self->super.__vtable.Dealloc_f = &Process_Dealloc;
 
