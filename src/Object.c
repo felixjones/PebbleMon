@@ -7,7 +7,7 @@ xiObject_t * Object_Alloc() {
 	return ( xiObject_t * )Memory_Alloc( sizeof( xiObject_t ) );
 }
 
-void Object_Dealloc( xiObject_t * const self ) {
+void Object_Dealloc( const xiObject_t * const self ) {
 	Memory_Free( self );
 }
 

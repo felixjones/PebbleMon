@@ -8,7 +8,7 @@ typedef struct xiObject_s {
 } xiObject_t;
 
 xiObject_t *	Object_Alloc();
-void			Object_Dealloc( xiObject_t * const self );
+void			Object_Dealloc( const xiObject_t * const self );
 xiObject_t *	Object_Init( xiObject_t * const self );
 void			Object_Retain( const xiObject_t * const self );
 void			Object_Release( const xiObject_t * const self );

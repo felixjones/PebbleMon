@@ -161,7 +161,7 @@ void * Memory_Alloc( size_t size ) {
 	return NULLPTR;
 }
 
-void Memory_Free( void * ptr ) {
+void Memory_Free( const void * ptr ) {
 	if ( ptr == NULLPTR ) {
 		return;
 	}
