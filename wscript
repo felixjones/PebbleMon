@@ -53,6 +53,9 @@ def build(ctx):
                     '-Wno-error=unused-function',
                     '-Wno-error=unused-variable',
 					'-fno-strict-aliasing']
+    ctx.env.CFLAGS.append('-Wa,-mimplicit-it=always')
+    #ctx.env.CFLAGS.append('-ffast-math')
+    #ctx.env.CFLAGS.append('-funroll-loops')
 
     ctx.pbl_program(source=ctx.path.ant_glob('src/**/*.c'),
                     target='pebble-app.elf')
