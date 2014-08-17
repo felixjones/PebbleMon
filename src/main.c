@@ -21,5 +21,6 @@ int main() {
 	APP_LOG( APP_LOG_LEVEL_INFO, "Shutting down" );
 	SceneManager_Exit();
 
+	Memory_DetectLeaks();
 	return 0;
 }
