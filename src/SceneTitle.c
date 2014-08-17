@@ -1,6 +1,7 @@
 #include "SceneTitle.h"
 
 #include <pebble.h>
+#include "Memory.h"
 
 static void SceneTitle_Draw( xiSceneTitle_t * const self, GContext * ctx ) {
 	WindowBase_Draw( &self->windowBase, self->super.pebble.drawLayer );
