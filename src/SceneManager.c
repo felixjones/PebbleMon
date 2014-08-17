@@ -1,5 +1,6 @@
 #include "SceneManager.h"
 
+#include <pebble.h>
 #include "SceneBase.h"
 #include "Memory.h"
 
@@ -18,6 +19,8 @@ void SceneManager_Run() {
 }
 
 void SceneManager_Return() {
+	window_stack_pop( TRUE );
+
 	if ( stackTop ) {
 		sceneList_t * const newTop = stackTop->previous;
 
@@ -29,10 +32,17 @@ void SceneManager_Return() {
 }
 
 void SceneManager_Goto( xiSceneBase_t * const scene ) {
-	Object_Retain( scene );
+	window_stack_pop_all( TRUE );
 
+	Object_Retain( scene );
+	
 	while ( stackTop ) {
-		SceneManager_Return();
+		sceneList_t * const newTop = stackTop->previous;
+
+		Object_Release( stackTop->scene );
+		Memory_Free( stackTop );
+
+		stackTop = newTop;
 	}
 	
 	stackTop = Memory_Alloc( sizeof( sceneList_t ) );
@@ -41,6 +51,8 @@ void SceneManager_Goto( xiSceneBase_t * const scene ) {
 }
 
 void SceneManager_Call( xiSceneBase_t * const scene ) {
+	window_stack_push( ( Window * )scene->pebble.native, TRUE );
+
 	Object_Retain( scene );
 
 	sceneList_t * const newTop = Memory_Alloc( sizeof( sceneList_t ) );
@@ -51,8 +63,15 @@ void SceneManager_Call( xiSceneBase_t * const scene ) {
 }
 
 void SceneManager_Exit() {
+	window_stack_pop_all( FALSE );
+
 	while ( stackTop ) {
-		SceneManager_Return();
+		sceneList_t * const newTop = stackTop->previous;
+
+		Object_Release( stackTop->scene );
+		Memory_Free( stackTop );
+
+		stackTop = newTop;
 	}
 }
 
