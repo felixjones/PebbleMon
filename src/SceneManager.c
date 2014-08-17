@@ -4,6 +4,7 @@
 #include "SceneBase.h"
 #include "Memory.h"
 
+typedef void ( * update_t )( void * );
 typedef struct sceneList_s	sceneList_t;
 typedef struct sceneList_s {
 	xiSceneBase_t *	scene;
@@ -11,10 +12,14 @@ typedef struct sceneList_s {
 } sceneList_t;
 
 static sceneList_t *	stackTop = NULLPTR;
+static AppTimer *		updateTimer = NULLPTR;
 
-void SceneManager_Run() {
-	if ( stackTop ) {
-		SceneBase_Update( stackTop->scene );
+static void SceneManager_Prepare() {
+	if ( !stackTop ) {
+		app_timer_cancel( updateTimer );
+		updateTimer = NULLPTR;
+	} else {
+		updateTimer = app_timer_register( 500, ( update_t )stackTop->scene->__vtable.Update_f, stackTop->scene );
 	}
 }
 
@@ -29,6 +34,8 @@ void SceneManager_Return() {
 
 		stackTop = newTop;
 	}
+	
+	SceneManager_Prepare();
 }
 
 void SceneManager_Goto( xiSceneBase_t * const scene ) {
@@ -48,6 +55,8 @@ void SceneManager_Goto( xiSceneBase_t * const scene ) {
 	stackTop = Memory_Alloc( sizeof( sceneList_t ) );
 	stackTop->scene = scene;
 	stackTop->previous = NULLPTR;
+
+	SceneManager_Prepare();
 }
 
 void SceneManager_Call( xiSceneBase_t * const scene ) {
@@ -60,6 +69,8 @@ void SceneManager_Call( xiSceneBase_t * const scene ) {
 	newTop->previous = stackTop;
 
 	stackTop = newTop;
+	
+	SceneManager_Prepare();
 }
 
 void SceneManager_Exit() {
@@ -73,6 +84,8 @@ void SceneManager_Exit() {
 
 		stackTop = newTop;
 	}
+	
+	SceneManager_Prepare();
 }
 
 xiSceneBase_t * SceneManager_Scene() {

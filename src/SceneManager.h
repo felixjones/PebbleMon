@@ -3,7 +3,6 @@
 
 typedef struct xiSceneBase_s	xiSceneBase_t;
 
-void			SceneManager_Run(); // Runs top scene
 void			SceneManager_Return(); // Pops scene
 void			SceneManager_Goto( xiSceneBase_t * const scene ); // Clears stack, pushes scene
 void			SceneManager_Call( xiSceneBase_t * const scene ); // Pushes scene

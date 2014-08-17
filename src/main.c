@@ -4,9 +4,11 @@
 #include "SceneBase.h"
 
 static uint8_t		__heap[0x0400];
-static AppTimer *	updateTimer = NULLPTR;
 
-void Update( void * userPtr ) {
+int main() {
+	Memory_Initialise( &__heap, sizeof( __heap ) );
+	APP_LOG( APP_LOG_LEVEL_INFO, "Initialised memory" );
+	
 	if ( SceneManager_Scene() == NULLPTR ) {
 		APP_LOG( APP_LOG_LEVEL_INFO, "Starting base scene" );
 		xiSceneBase_t * const sceneBase = SceneBase_Init( SceneBase_Alloc() );
@@ -15,20 +17,6 @@ void Update( void * userPtr ) {
 			Object_Release( sceneBase );
 		}
 	}
-
-	APP_LOG( APP_LOG_LEVEL_INFO, "Update called" );
-
-	SceneManager_Run();
-
-	app_timer_cancel( updateTimer );
-	updateTimer = app_timer_register( 500, &Update, NULLPTR );
-}
-
-int main() {
-	Memory_Initialise( &__heap, sizeof( __heap ) );
-	APP_LOG( APP_LOG_LEVEL_INFO, "Initialised memory" );
-
-	updateTimer = app_timer_register( 500, &Update, NULLPTR );
 
 	app_event_loop();
 	
