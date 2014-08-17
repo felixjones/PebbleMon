@@ -4,7 +4,7 @@
 #include "SceneBase.h"
 #include "Memory.h"
 
-typedef void ( * update_t )( void * );
+typedef void ( * sceneUpdate_t )( void * );
 typedef struct sceneList_s	sceneList_t;
 typedef struct sceneList_s {
 	xiSceneBase_t *	scene;
@@ -19,7 +19,7 @@ static void SceneManager_Prepare() {
 		app_timer_cancel( updateTimer );
 		updateTimer = NULLPTR;
 	} else {
-		updateTimer = app_timer_register( 500, ( update_t )stackTop->scene->__vtable.Update_f, stackTop->scene );
+		updateTimer = app_timer_register( 500, ( sceneUpdate_t )stackTop->scene->__vtable.Update_f, stackTop->scene );
 	}
 }
 
