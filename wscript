@@ -5,8 +5,6 @@
 # Feel free to customize this to your needs.
 #
 
-# -fno-strict-aliasing
-
 try:
     from sh import CommandNotFound, jshint, cat, ErrorReturnCode_2
     hint = jshint
@@ -42,6 +40,7 @@ def build(ctx):
     ctx.load('pebble_sdk')
 
     ctx.pbl_program(source=ctx.path.ant_glob('src/**/*.c'),
+					cflags  = '-fno-strict-aliasing',
                     target='pebble-app.elf')
 
     ctx.pbl_bundle(elf='pebble-app.elf',
