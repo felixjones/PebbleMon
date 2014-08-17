@@ -13,4 +13,6 @@ int main(void) {
 
 		Object_Release( process );
 	}
+
+	return 1;
 }

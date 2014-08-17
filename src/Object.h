@@ -3,6 +3,7 @@
 
 #include "intdef.h"
 
+typedef struct xiObject_s	xiObject_t;
 typedef struct xiObject_s {
 	int8_t	retainCount;
 

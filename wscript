@@ -5,6 +5,8 @@
 # Feel free to customize this to your needs.
 #
 
+# -fno-strict-aliasing
+
 try:
     from sh import CommandNotFound, jshint, cat, ErrorReturnCode_2
     hint = jshint
@@ -19,6 +21,7 @@ def options(ctx):
 
 def configure(ctx):
     ctx.load('pebble_sdk')
+    print(ctx.env)
     global hint
     if hint is not None:
         hint = hint.bake(['--config', 'pebble-jshintrc'])
