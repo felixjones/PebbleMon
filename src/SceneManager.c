@@ -15,7 +15,7 @@ static sceneList_t *	stackTop = NULLPTR;
 static AppTimer *		updateTimer = NULLPTR;
 
 static void SceneManager_Prepare() {
-	if ( !stackTop ) {
+	if ( !stackTop && updateTimer ) {
 		app_timer_cancel( updateTimer );
 		updateTimer = NULLPTR;
 	} else {
@@ -89,5 +89,9 @@ void SceneManager_Exit() {
 }
 
 xiSceneBase_t * SceneManager_Scene() {
+	if ( !stackTop ) {
+		return NULLPTR;
+	}
+
 	return stackTop->scene;
 }
