@@ -1,6 +1,7 @@
 #include "Memory.h"
 
 #include <string.h>
+#include <pebble.h>
 
 typedef struct allocator_s {
 	void *	start;
@@ -166,15 +167,20 @@ void Memory_Free( const void * ptr ) {
 		return;
 	}
 
+	app_log( APP_LOG_LEVEL_INFO, __FILE__, __LINE__, "Freeing pointer %p", ptr );
+
 	uintptr_t p = ( uintptr_t )ptr;
 	allocationHeader_t * header = ( allocationHeader_t * )( p - sizeof( allocationHeader_t ) );
+	
+	app_log( APP_LOG_LEVEL_INFO, __FILE__, __LINE__, "Pointer ID'd as %p", header->selfPtr );
 
 	if ( header->selfPtr != ptr ) {
 		// Error attempting to free non existant pointer???
 		return;
 	}
+	app_log( APP_LOG_LEVEL_INFO, __FILE__, __LINE__, "Removing self reference" );
 	header->selfPtr = NULLPTR;
-
+	
 	uintptr_t blockStart = p - header->adjustment;
 	size_t blockSize = header->size;
 	uintptr_t blockEnd = blockStart + blockSize;

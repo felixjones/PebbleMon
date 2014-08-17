@@ -5,6 +5,8 @@
 static uint8_t __heap[0x0400];
 
 int main(void) {
+	app_log( APP_LOG_LEVEL_INFO, __FILE__, __LINE__, "Starting" );
+
 	Memory_Initialise( &__heap, sizeof( __heap ) );
 
 	xiProcess_t * const process = Process_Init( Process_Alloc() );
@@ -14,5 +16,7 @@ int main(void) {
 		Object_Release( process );
 	}
 
-	return 1;
+	app_log( APP_LOG_LEVEL_INFO, __FILE__, __LINE__, "Ending" );
+
+	return 0;
 }
