@@ -34,11 +34,11 @@ xiSceneBase_t * SceneBase_Init( xiSceneBase_t * const self ) {
 
 	Layer * const nativeLayer = window_get_root_layer( ( Window * )self->pebble.native );
 	const GRect bounds = layer_get_frame( nativeLayer );
-
+	
 	Layer * const drawLayer = layer_create_with_data( bounds, sizeof( self ) );
 	memcpy( layer_get_data( drawLayer ), self, sizeof( self ) );
-
-	layer_set_update_proc( self->pebble.drawLayer, SceneBase_LayerUpdate );
+	
+	layer_set_update_proc( drawLayer, SceneBase_LayerUpdate );
 	layer_add_child( nativeLayer, drawLayer );
 	
 	self->pebble.drawLayer = drawLayer;
