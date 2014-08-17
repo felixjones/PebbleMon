@@ -27,6 +27,8 @@ xiSceneBase_t * SceneBase_Alloc() {
 
 xiSceneBase_t * SceneBase_Init( xiSceneBase_t * const self ) {
 	Object_Init( ( xiObject_t * )self );
+	
+	APP_LOG( APP_LOG_LEVEL_INFO, "SceneBase_Init" );
 
 	self->pebble.native = window_create();
 

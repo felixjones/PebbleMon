@@ -39,6 +39,8 @@ xiWindowBase_t * WindowBase_Init( xiWindowBase_t * const self, const uint8_t x, 
 
 	self->__vtable.Draw_f = NULLPTR;
 
+	APP_LOG( APP_LOG_LEVEL_INFO, "WindowBase_Init" );
+
 	if ( windowSkinReferences == 0 ) {
 		windowSkin = gbitmap_create_with_resource( RESOURCE_ID_WINDOW_SKIN );
 	}

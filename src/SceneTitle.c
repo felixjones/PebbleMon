@@ -22,6 +22,8 @@ xiSceneTitle_t * SceneTitle_Alloc() {
 
 xiSceneTitle_t * SceneTitle_Init( xiSceneTitle_t * const self ) {
 	SceneBase_Init( ( xiSceneBase_t * )self );
+	
+	APP_LOG( APP_LOG_LEVEL_INFO, "SceneTitle_Init" );
 
 	WindowBase_Init( &self->windowBase, 8, 8, 64, 64 );
 
