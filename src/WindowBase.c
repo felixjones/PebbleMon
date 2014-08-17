@@ -21,6 +21,7 @@ void WindowBase_Draw( xiWindowBase_t * const self, GContext * const ctx ) {
 	if ( self->__vtable.Draw_f ) {
 		self->__vtable.Draw_f( self, ctx );
 	} else {
+		APP_LOG( APP_LOG_LEVEL_INFO, "Drawing windowskin bitmap" );
 		graphics_draw_bitmap_in_rect( ctx, windowSkin, ( GRect ){ .origin = { self->rect.x, self->rect.y }, .size = windowSkin->bounds.size } );
 	}
 }

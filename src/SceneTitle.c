@@ -4,6 +4,7 @@
 #include "Memory.h"
 
 static void SceneTitle_Draw( xiSceneTitle_t * const self, GContext * ctx ) {
+	APP_LOG( APP_LOG_LEVEL_INFO, "Drawing window" );
 	WindowBase_Draw( &self->windowBase, self->super.pebble.drawLayer );
 }
 
