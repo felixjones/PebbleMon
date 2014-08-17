@@ -4,7 +4,9 @@
 #include "Memory.h"
 
 static void SceneBase_Draw( xiSceneBase_t * const self, GContext * ctx ) {
+	APP_LOG( APP_LOG_LEVEL_INFO, "Getting func pointer" );
 	if ( self->__vtable.Draw_f ) {
+		APP_LOG( APP_LOG_LEVEL_INFO, "Using func pointer" );
 		self->__vtable.Draw_f( self, ctx );
 	}
 }
@@ -40,7 +42,7 @@ xiSceneBase_t * SceneBase_Init( xiSceneBase_t * const self ) {
 	Layer * const nativeLayer = window_get_root_layer( ( Window * )self->pebble.native );
 	const GRect bounds = layer_get_frame( nativeLayer );
 	
-	Layer * const drawLayer = layer_create_with_data( bounds, sizeof( self ) );
+	Layer * const drawLayer = layer_create_with_data( bounds, sizeof( ptrdiff_t ) );
 	memcpy( layer_get_data( drawLayer ), self, sizeof( self ) );
 	
 	layer_set_update_proc( drawLayer, SceneBase_LayerUpdate );
