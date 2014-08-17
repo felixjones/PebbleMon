@@ -7,7 +7,13 @@
     "longName": "PebbleMon",
     "projectType": "native",
     "resources": {
-        "media": []
+        "media": [
+            {
+                "file": "images/window_skin.png",
+                "name": "WINDOW_SKIN",
+                "type": "png"
+            }
+        ]
     },
     "shortName": "PebbleMon",
     "uuid": "5dfd775e-3e9c-419c-b16c-efbfbb68b491",
