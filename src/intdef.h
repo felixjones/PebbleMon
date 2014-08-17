@@ -6,6 +6,7 @@
 
 #define TRUE	( 1 )
 #define FALSE	( 0 )
+#define NULLPTR	( ( void * )0 )
 
 typedef _Bool	bool_t;
 

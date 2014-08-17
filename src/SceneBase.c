@@ -17,6 +17,13 @@ xiSceneBase_t * SceneBase_Init( xiSceneBase_t * const self ) {
 	Object_Init( ( xiObject_t * )self );
 
 	self->pebble.native = window_create();
+	self->__vtable.Update_f = NULLPTR;
 
 	return self;
+}
+
+void SceneBase_Update( xiSceneBase_t * const self ) {
+	if ( self->__vtable.Update_f ) {
+		self->__vtable.Update_f( self );
+	}
 }

@@ -3,15 +3,23 @@
 
 #include "Object.h"
 
+typedef struct xiSceneBase_s	xiSceneBase_t;
+typedef void	( * update_t )( xiSceneBase_t * const self );
+
 typedef struct xiSceneBase_s {
 	xiObject_t	super;
 
 	struct {
 		void *	native;
 	} pebble;
+
+	struct {
+		update_t	Update_f;
+	} __vtable;
 } xiSceneBase_t;
 
 xiSceneBase_t * SceneBase_Alloc();
 xiSceneBase_t *	SceneBase_Init( xiSceneBase_t * const self );
+void			SceneBase_Update( xiSceneBase_t * const self );
 
 #endif
