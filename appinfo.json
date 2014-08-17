@@ -1,0 +1,19 @@
+{
+    "appKeys": {},
+    "capabilities": [
+        ""
+    ],
+    "companyName": "felix@felixjones.co.uk",
+    "longName": "PebbleMon",
+    "projectType": "native",
+    "resources": {
+        "media": []
+    },
+    "shortName": "PebbleMon",
+    "uuid": "5dfd775e-3e9c-419c-b16c-efbfbb68b491",
+    "versionCode": 1,
+    "versionLabel": "1.0",
+    "watchapp": {
+        "watchface": false
+    }
+}
