@@ -9,5 +9,6 @@ void *	Memory_Calloc( const size_t num, const size_t size );
 void	Memory_Free( const void * ptr );
 void *	Memory_Alloc( size_t size );
 void *	Memory_Realloc( void * ptr, size_t size );
+void	Memory_DetectLeaks();
 
 #endif

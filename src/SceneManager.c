@@ -27,7 +27,7 @@ static void SceneManager_Prepare() {
 		app_timer_cancel( updateTimer );
 		updateTimer = NULLPTR;
 	} else {
-		updateTimer = app_timer_register( 500, SceneManager_Run, NULLPTR );
+		SceneManager_Run( NULLPTR );
 	}
 }
 

@@ -91,6 +91,12 @@ void Memory_Initialise( void * const memoryBlock, const size_t memoryLength ) {
 	allocator.freeBlocks->next = NULLPTR;
 }
 
+void Memory_DetectLeaks() {
+	if ( allocator.super.numAllocations > 0 ) {
+		APP_LOG( APP_LOG_LEVEL_ERROR, "LEAKS DETECTED!!!" );
+	}
+}
+
 bool_t Memory_IsAllocated( const void * const ptr ) {
 	if ( ptr == NULLPTR ) {
 		return FALSE;
