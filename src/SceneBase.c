@@ -5,16 +5,16 @@
 
 static void SceneBase_LayerUpdate( Layer * me, GContext * ctx ) {
 	xiSceneBase_t * const self = ( xiSceneBase_t * )layer_get_data( me );
-	SceneBase_Draw( self );
+	SceneBase_Draw( self, ctx );
 }
 
-static void SceneBase_Draw( xiSceneBase_t * const self ) {
+static void SceneBase_Draw( xiSceneBase_t * const self, GContext * ctx ) {
 	if ( self->__vtable.Draw_f ) {
-		self->__vtable.Draw_f( self );
+		self->__vtable.Draw_f( self, ctx );
 	}
 }
 
-static void SceneBase_Dealloc( xiSceneBase_t * const self ) {
+void SceneBase_Dealloc( xiSceneBase_t * const self ) {
 	layer_destroy( ( Layer * )self->pebble.drawLayer );
 	window_destroy( ( Window * )self->pebble.native );
 

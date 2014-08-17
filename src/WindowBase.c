@@ -21,7 +21,7 @@ void WindowBase_Draw( xiWindowBase_t * const self, GContext * const ctx ) {
 	if ( self->__vtable.Draw_f ) {
 		self->__vtable.Draw_f( self, ctx );
 	} else {
-		graphics_draw_bitmap_in_rect( ctx, windowSkin, ( GRect ){ .origin = { 0, 0 }, .size = windowSkin->bounds.size } );
+		graphics_draw_bitmap_in_rect( ctx, windowSkin, ( GRect ){ .origin = { self->rect.x, self->rect.y }, .size = windowSkin->bounds.size } );
 	}
 }
 
@@ -32,8 +32,6 @@ xiWindowBase_t * WindowBase_Alloc() {
 xiWindowBase_t * WindowBase_Init( xiWindowBase_t * const self, const uint8_t x, const uint8_t y, const uint8_t width, const uint8_t height ) {
 	Object_Init( ( xiObject_t * )self );
 	
-	memset( &self->origin, 0, sizeof( self->origin ) );
-
 	self->rect.x = x;
 	self->rect.y = y;
 	self->rect.width = width;
