@@ -38,7 +38,21 @@ def build(ctx):
 
     ctx.load('pebble_sdk')
 
-    ctx.env.CFLAGS.append('-fno-strict-aliasing')
+   ctx.env.CFLAGS=[	'-std=c99',
+                    '-mcpu=cortex-m3',
+                    '-mthumb',
+                    '-O3',
+                    '-g',
+                    '-ffunction-sections',
+                    '-fdata-sections',
+                    #'-funroll-loops',
+                    '-Wall',
+                    '-Wextra',
+                    #'-Werror',
+                    '-Wno-unused-parameter',
+                    '-Wno-error=unused-function',
+                    '-Wno-error=unused-variable',
+					'-fno-strict-aliasing']
 
     ctx.pbl_program(source=ctx.path.ant_glob('src/**/*.c'),
                     target='pebble-app.elf')
