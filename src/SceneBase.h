@@ -27,5 +27,6 @@ xiSceneBase_t * SceneBase_Alloc();
 void			SceneBase_Dealloc( xiSceneBase_t * const self );
 xiSceneBase_t *	SceneBase_Init( xiSceneBase_t * const self );
 void			SceneBase_Update( xiSceneBase_t * const self );
+void			SceneBase_Invalidate( xiSceneBase_t * const self );
 
 #endif

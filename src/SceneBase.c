@@ -71,3 +71,7 @@ void SceneBase_Update( xiSceneBase_t * const self ) {
 		self->__vtable.Update_f( self );
 	}
 }
+
+void SceneBase_Invalidate( xiSceneBase_t * const self ) {
+	layer_mark_dirty( self->pebble.drawLayer );
+}

@@ -17,6 +17,7 @@ static AppTimer *		updateTimer = NULLPTR;
 
 static void SceneManager_Run( void * userPtr ) {
 	if ( stackTop ) {
+		SceneBase_Invalidate( stackTop->scene );
 		SceneBase_Update( stackTop->scene );
 
 		updateTimer = app_timer_register( UPDATE_TICK, SceneManager_Run, NULLPTR );
@@ -31,7 +32,7 @@ static void SceneManager_Prepare() {
 		app_timer_cancel( updateTimer );
 		updateTimer = NULLPTR;
 	} else {
-		SceneManager_Run( NULLPTR );
+		updateTimer = app_timer_register( UPDATE_TICK, SceneManager_Run, NULLPTR );
 	}
 }
 
