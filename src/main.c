@@ -1,7 +1,7 @@
 #include "Object.h"
 #include "Memory.h"
 
-uint8_t heap[0x100000];
+uint8_t heap[0x10000];
 
 int main() {
 	Memory_Initialise( &heap, sizeof( heap ) );
