@@ -1,10 +1,10 @@
 #include "Object.h"
 #include "Memory.h"
 
-static unsigned char heap[0x100];
+static uint8_t __heap[0x0400];
 
 int main() {
-	Memory_Initialise( &heap, sizeof( heap ) );
+	Memory_Initialise( &__heap, sizeof( __heap ) );
 
 	/*xiObject_t stack;
 	xiObject_t * const object = Object_Init( &stack );
