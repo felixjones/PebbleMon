@@ -1,7 +1,7 @@
 #include "Object.h"
 #include "Memory.h"
 
-uint8_t heap[0x1000];
+static unsigned char heap[0x1000];
 
 int main() {
 	Memory_Initialise( &heap, sizeof( heap ) );
@@ -11,7 +11,9 @@ int main() {
 	Object_Release( object );*/
 
 	xiObject_t * const object = Object_Init( Object_Alloc() );
-	Object_Release( object );
+	if ( object ) {
+		Object_Release( object );
+	}
 
 	return 1;
 }
