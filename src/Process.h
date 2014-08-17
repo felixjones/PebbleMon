@@ -10,4 +10,6 @@ typedef struct xiProcess_s {
 xiProcess_t *	Process_Alloc();
 xiProcess_t *	Process_Init( xiProcess_t * const self );
 
+#pragma No_Strict_Aliasing( xiProcess_t )
+
 #endif

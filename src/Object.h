@@ -18,4 +18,6 @@ xiObject_t *	Object_Init( xiObject_t * const self );
 void			Object_Retain( const xiObject_t * const self );
 void			Object_Release( const xiObject_t * const self );
 
+#pragma No_Strict_Aliasing( xiObject_t )
+
 #endif
