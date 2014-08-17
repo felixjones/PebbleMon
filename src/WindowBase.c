@@ -22,7 +22,14 @@ void WindowBase_Draw( xiWindowBase_t * const self, GContext * const ctx ) {
 		self->__vtable.Draw_f( self, ctx );
 	} else {
 		APP_LOG( APP_LOG_LEVEL_INFO, "Drawing windowskin bitmap" );
-		graphics_draw_bitmap_in_rect( ctx, windowSkin, ( GRect ){ .origin = { self->rect.x, self->rect.y }, .size = windowSkin->bounds.size } );
+
+		GRect rect;
+		rect.origin.x = self->rect.x;
+		rect.origin.y = self->rect.y;
+		rect.size.w = self->rect.width;
+		rect.size.h = self->rect.height;
+
+		graphics_draw_bitmap_in_rect( ctx, windowSkin, rect );
 	}
 }
 
