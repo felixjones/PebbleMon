@@ -74,6 +74,11 @@ void SceneManager_Call( xiSceneBase_t * const scene ) {
 }
 
 void SceneManager_Exit() {
+	if ( updateTimer ) {
+		app_timer_cancel( updateTimer );
+		updateTimer = NULLPTR;
+	}
+
 	window_stack_pop_all( FALSE );
 
 	while ( stackTop ) {
@@ -84,8 +89,6 @@ void SceneManager_Exit() {
 
 		stackTop = newTop;
 	}
-	
-	SceneManager_Prepare();
 }
 
 xiSceneBase_t * SceneManager_Scene() {
