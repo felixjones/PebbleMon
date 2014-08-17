@@ -3,12 +3,14 @@
 
 #include "intdef.h"
 
+typedef void ( * dealloc_t )( const xiObject_t * const self );
+
 typedef struct xiObject_s	xiObject_t;
 typedef struct xiObject_s {
 	int8_t	retainCount;
 
 	struct {
-		void	( * Dealloc_f )( const xiObject_t * const self );
+		dealloc_t	Dealloc_f;
 	} __vtable;
 } xiObject_t;
 

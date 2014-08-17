@@ -15,7 +15,7 @@ xiProcess_t * Process_Alloc() {
 xiProcess_t * Process_Init( xiProcess_t * const self ) {
 	Object_Init( ( xiObject_t * )self );
 
-	self->super.__vtable.Dealloc_f = &Process_Dealloc;
+	self->super.__vtable.Dealloc_f = ( dealloc_t )&Process_Dealloc;
 
 	// Startup
 }
