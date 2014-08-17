@@ -19,7 +19,6 @@ def options(ctx):
 
 def configure(ctx):
     ctx.load('pebble_sdk')
-    print(ctx.env)
     global hint
     if hint is not None:
         hint = hint.bake(['--config', 'pebble-jshintrc'])
@@ -39,8 +38,9 @@ def build(ctx):
 
     ctx.load('pebble_sdk')
 
+    ctx.env.CFLAGS.append('-fno-strict-aliasing')
+
     ctx.pbl_program(source=ctx.path.ant_glob('src/**/*.c'),
-					cflags  = '-fno-strict-aliasing',
                     target='pebble-app.elf')
 
     ctx.pbl_bundle(elf='pebble-app.elf',
