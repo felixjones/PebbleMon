@@ -12,7 +12,7 @@ int main() {
 	APP_LOG( APP_LOG_LEVEL_INFO, "Starting base scene" );
 	xiSceneTitle_t * const sceneTitle = SceneTitle_Init( SceneTitle_Alloc() );
 	if ( sceneTitle ) {
-		SceneManager_Call( sceneTitle );
+		SceneManager_Call( ( xiSceneBase_t * )sceneTitle );
 		Object_Release( sceneTitle );
 	}
 
