@@ -3,6 +3,11 @@
 
 #include "Object.h"
 
+struct GContext;
+typedef struct GContext GContext;
+typedef struct xiWindowBase_s	xiWindowBase_t;
+typedef void ( * draw_t )( xiWindowBase_t * const self, GContext * const ctx );
+
 typedef struct xiWindowBase_s {
 	xiObject_t	super;
 
@@ -12,9 +17,19 @@ typedef struct xiWindowBase_s {
 		uint8_t	width;
 		uint8_t	height;
 	} rect;
+
+	struct {
+		uint8_t	ox;
+		uint8_t	oy;
+	} origin;
+
+	struct {
+		draw_t	Draw_f;
+	} __vtable;
 } xiWindowBase_t;
 
 xiWindowBase_t *	WindowBase_Alloc();
 xiWindowBase_t *	WindowBase_Init( xiWindowBase_t * const self, const uint8_t x, const uint8_t y, const uint8_t width, const uint8_t height );
+void				WindowBase_Draw( xiWindowBase_t * const self );
 
 #endif

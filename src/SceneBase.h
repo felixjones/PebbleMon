@@ -11,10 +11,12 @@ typedef struct xiSceneBase_s {
 
 	struct {
 		void *	native;
+		void *	drawLayer;
 	} pebble;
 
 	struct {
 		update_t	Update_f;
+		update_t	Draw_f;
 	} __vtable;
 } xiSceneBase_t;
 
