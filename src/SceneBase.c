@@ -23,6 +23,8 @@ xiSceneBase_t * SceneBase_Init( xiSceneBase_t * const self ) {
 }
 
 void SceneBase_Update( xiSceneBase_t * const self ) {
+	APP_LOG( APP_LOG_LEVEL_INFO, "SceneBase_Update called" );
+
 	if ( self->__vtable.Update_f ) {
 		self->__vtable.Update_f( self );
 	}
