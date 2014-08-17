@@ -18,4 +18,6 @@ xiProcess_t * Process_Init( xiProcess_t * const self ) {
 	self->super.__vtable.Dealloc_f = ( dealloc_t )&Process_Dealloc;
 
 	// Startup
+
+	return self;
 }
