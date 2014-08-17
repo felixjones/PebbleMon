@@ -6,7 +6,7 @@
 static uint8_t		__heap[0x0400];
 
 int main() {
-	Memory_Initialise( &__heap, sizeof( __heap ) );
+	Memory_Initialise( &__heap[0], sizeof( __heap ) );
 	APP_LOG( APP_LOG_LEVEL_INFO, "Initialised memory" );
 	
 	APP_LOG( APP_LOG_LEVEL_INFO, "Starting base scene" );

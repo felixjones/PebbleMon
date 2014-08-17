@@ -11,7 +11,7 @@ typedef struct xiSceneTitle_s {
 } xiSceneTitle_t;
 
 xiSceneTitle_t *	SceneTitle_Alloc();
-void				SceneTitle_Dealloc( xiSceneTitle_t * const self )
+void				SceneTitle_Dealloc( xiSceneTitle_t * const self );
 xiSceneTitle_t *	SceneTitle_Init( xiSceneTitle_t * const self );
 
 #endif
