@@ -4,7 +4,6 @@
 #include "SceneBase.h"
 #include "Memory.h"
 
-typedef void ( * sceneUpdate_t )( void * );
 typedef struct sceneList_s	sceneList_t;
 typedef struct sceneList_s {
 	xiSceneBase_t *	scene;

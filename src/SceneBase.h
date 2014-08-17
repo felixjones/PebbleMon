@@ -6,7 +6,7 @@
 struct GContext;
 typedef struct GContext GContext;
 typedef struct xiSceneBase_s	xiSceneBase_t;
-typedef void	( * update_t )( xiSceneBase_t * const self );
+typedef void	( * sceneUpdate_t )( xiSceneBase_t * const self );
 typedef void	( * sceneDraw_t )( xiSceneBase_t * const self, GContext * ctx );
 
 typedef struct xiSceneBase_s {
@@ -18,8 +18,8 @@ typedef struct xiSceneBase_s {
 	} pebble;
 
 	struct {
-		update_t	Update_f;
-		sceneDraw_t	Draw_f;
+		sceneUpdate_t	Update_f;
+		sceneDraw_t		Draw_f;
 	} __vtable;
 } xiSceneBase_t;
 
