@@ -11,7 +11,9 @@ static void SceneBase_Draw( xiSceneBase_t * const self, GContext * ctx ) {
 
 static void SceneBase_LayerUpdate( Layer * me, GContext * ctx ) {
 	APP_LOG( APP_LOG_LEVEL_INFO, "Getting data" );
-	xiSceneBase_t * const self = ( xiSceneBase_t * )layer_get_data( me );
+
+	xiSceneBase_t * self = NULLPTR;
+	memcpy( self, layer_get_data( me ), sizeof( self ) );
 	
 	APP_LOG( APP_LOG_LEVEL_INFO, "Drawing to context" );
 	SceneBase_Draw( self, ctx );
