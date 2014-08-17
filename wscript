@@ -5,6 +5,8 @@
 # Feel free to customize this to your needs.
 #
 
+# -fno-strict-aliasing
+
 try:
     from sh import CommandNotFound, jshint, cat, ErrorReturnCode_2
     hint = jshint
@@ -19,6 +21,7 @@ def options(ctx):
 
 def configure(ctx):
     ctx.load('pebble_sdk')
+	ctx.env.prepend_value('CFLAGS', ['-fno-strict-aliasing'])
     global hint
     if hint is not None:
         hint = hint.bake(['--config', 'pebble-jshintrc'])
@@ -37,25 +40,6 @@ def build(ctx):
         ctx.exec_command(['cat'] + js_paths, stdout=open('src/js/pebble-js-app.js', 'a'))
 
     ctx.load('pebble_sdk')
-
-   ctx.env.CFLAGS=[	'-std=c99',
-                    '-mcpu=cortex-m3',
-                    '-mthumb',
-                    '-O3',
-                    '-g',
-                    '-ffunction-sections',
-                    '-fdata-sections',
-                    #'-funroll-loops',
-                    '-Wall',
-                    '-Wextra',
-                    #'-Werror',
-                    '-Wno-unused-parameter',
-                    '-Wno-error=unused-function',
-                    '-Wno-error=unused-variable',
-					'-fno-strict-aliasing']
-    ctx.env.CFLAGS.append('-Wa,-mimplicit-it=always')
-    #ctx.env.CFLAGS.append('-ffast-math')
-    #ctx.env.CFLAGS.append('-funroll-loops')
 
     ctx.pbl_program(source=ctx.path.ant_glob('src/**/*.c'),
                     target='pebble-app.elf')
