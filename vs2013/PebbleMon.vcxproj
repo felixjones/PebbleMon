@@ -81,11 +81,13 @@
     <ClInclude Include="..\src\intdef.h" />
     <ClInclude Include="..\src\Memory.h" />
     <ClInclude Include="..\src\Object.h" />
+    <ClInclude Include="..\src\Process.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.c" />
     <ClCompile Include="..\src\Memory.c" />
     <ClCompile Include="..\src\Object.c" />
+    <ClCompile Include="..\src\Process.c" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\appinfo.json" />

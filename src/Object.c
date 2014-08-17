@@ -8,12 +8,20 @@ xiObject_t * Object_Alloc() {
 }
 
 void Object_Dealloc( const xiObject_t * const self ) {
-	Memory_Free( self );
+	if ( self->__vtable.Dealloc_f ) {
+		xiObject_t * const mutableSelf = ( xiObject_t * )self;
+
+		mutableSelf->__vtable.Dealloc_f( self );
+		mutableSelf->__vtable.Dealloc_f = NULLPTR;
+	} else {
+		Memory_Free( self );
+	}
 }
 
 xiObject_t * Object_Init( xiObject_t * const self ) {
 	if ( self ) {
 		memset( self, 0, sizeof( *self ) );
+		
 		Object_Retain( self );
 	}
 

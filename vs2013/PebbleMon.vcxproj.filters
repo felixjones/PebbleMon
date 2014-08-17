@@ -18,6 +18,9 @@
     <ClInclude Include="..\src\intdef.h">
       <Filter>src\lib</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\Process.h">
+      <Filter>src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.c">
@@ -28,6 +31,9 @@
     </ClCompile>
     <ClCompile Include="..\src\Memory.c">
       <Filter>src\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Process.c">
+      <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

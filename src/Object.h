@@ -5,6 +5,10 @@
 
 typedef struct xiObject_s {
 	int8_t	retainCount;
+
+	struct {
+		void	( * Dealloc_f )( const xiObject_t * const self );
+	} __vtable;
 } xiObject_t;
 
 xiObject_t *	Object_Alloc();
