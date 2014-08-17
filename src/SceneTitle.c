@@ -7,6 +7,9 @@ static void SceneTitle_Draw( xiSceneTitle_t * const self, GContext * ctx ) {
 	WindowBase_Draw( &self->windowBase, self->super.pebble.drawLayer );
 }
 
+static void SceneTitle_Update( xiSceneTitle_t * const self ) {
+}
+
 void SceneTitle_Dealloc( xiSceneTitle_t * const self ) {
 	Object_Release( &self->windowBase );
 
@@ -26,7 +29,4 @@ xiSceneTitle_t * SceneTitle_Init( xiSceneTitle_t * const self ) {
 	self->super.__vtable.Update_f = ( sceneUpdate_t )SceneTitle_Update;
 
 	return self;
-}
-
-void SceneTitle_Update( xiSceneTitle_t * const self ) {
 }
