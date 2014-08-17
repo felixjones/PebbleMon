@@ -29,7 +29,7 @@ xiWindowBase_t * WindowBase_Init( xiWindowBase_t * const self, const uint8_t x, 
 	self->rect.height = height;
 
 	if ( windowSkinReferences == 0 ) {
-		windowSkin = gbitmap_create_with_resource( RESOURCE_WINDOW_SKIN );
+		windowSkin = gbitmap_create_with_resource( RESOURCE_ID_WINDOW_SKIN );
 	}
 	windowSkinReferences++;
 
