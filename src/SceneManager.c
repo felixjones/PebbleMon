@@ -4,6 +4,8 @@
 #include "SceneBase.h"
 #include "Memory.h"
 
+#define UPDATE_TICK	( 1000 )
+
 typedef struct sceneList_s	sceneList_t;
 typedef struct sceneList_s {
 	xiSceneBase_t *	scene;
@@ -17,7 +19,7 @@ static void SceneManager_Run( void * userPtr ) {
 	if ( stackTop ) {
 		SceneBase_Update( stackTop->scene );
 
-		updateTimer = app_timer_register( 500, SceneManager_Run, NULLPTR );
+		updateTimer = app_timer_register( UPDATE_TICK, SceneManager_Run, NULLPTR );
 	} else if ( updateTimer ) {
 		app_timer_cancel( updateTimer );
 		updateTimer = NULLPTR;
