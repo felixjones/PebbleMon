@@ -1,41 +1,17 @@
-#include <pebble.h>
+#include "Object.h"
+#include "Memory.h"
 
-static Window * window;
-static TextLayer *hello_layer;
-
-static void Window_Load(Window *window) {
-	Layer *window_layer = window_get_root_layer(window);
-	GRect bounds = layer_get_bounds(window_layer);
-
-	hello_layer = text_layer_create((GRect) { .origin = { 0, 72 }, .size = { bounds.size.w, 20 } });
-	text_layer_set_text(hello_layer, "Hello world");
-	text_layer_set_text_alignment(hello_layer, GTextAlignmentCenter);
-	layer_add_child(window_layer, text_layer_get_layer(hello_layer));
-}
-
-static void Window_Unload(Window *window) {
-	text_layer_destroy(hello_layer);
-}
-
-static void Init() {
-	window = window_create();
-	window_set_window_handlers( window, ( WindowHandlers ){ .load = Window_Load, .unload = Window_Unload } );
-	
-	const bool animated = true;
-	window_stack_push(window, animated);
-}
-
-static void Deinit() {
-  window_destroy(window);
-}
+uint8_t heap[0x100000];
 
 int main() {
-	Init();
+	Memory_Initialise( &heap, sizeof( heap ) );
 
-	APP_LOG(APP_LOG_LEVEL_DEBUG, "Done initializing, pushed watchface helloworld: %p", window);
+	/*xiObject_t stack;
+	xiObject_t * const object = Object_Init( &stack );
+	Object_Release( object );*/
 
-	app_event_loop();
-	Deinit();
+	xiObject_t * const object = Object_Init( Object_Alloc() );
+	Object_Release( object );
 
 	return 1;
 }

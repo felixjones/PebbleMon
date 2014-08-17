@@ -2,12 +2,35 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="src">
-      <UniqueIdentifier>{b6f82be3-3476-40c8-b322-4e0a2ce5aab2}</UniqueIdentifier>
+      <UniqueIdentifier>{c4587979-872e-4521-9ac0-87adf177273a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\lib">
+      <UniqueIdentifier>{119c58ae-4513-4c98-a67e-ebe932f9bffe}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\Object.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Memory.h">
+      <Filter>src\lib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Bool.h">
+      <Filter>src\lib</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.c">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\Object.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Memory.c">
+      <Filter>src\lib</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\appinfo.json" />
   </ItemGroup>
 </Project>
