@@ -1,7 +1,7 @@
 #include "Object.h"
 #include "Memory.h"
 
-static unsigned char heap[0x1000];
+static unsigned char heap[0x100];
 
 int main() {
 	Memory_Initialise( &heap, sizeof( heap ) );
