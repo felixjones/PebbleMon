@@ -26,7 +26,7 @@ xiSceneTitle_t * SceneTitle_Init( xiSceneTitle_t * const self ) {
 	
 	APP_LOG( APP_LOG_LEVEL_INFO, "SceneTitle_Init" );
 
-	WindowBase_Init( &self->windowBase, 8, 8, 64, 64 );
+	WindowBase_Init( &self->windowBase, 32, 32, 64, 64 );
 
 	self->super.__vtable.Draw_f = ( sceneDraw_t )SceneTitle_Draw;
 	self->super.__vtable.Update_f = ( sceneUpdate_t )SceneTitle_Update;
