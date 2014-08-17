@@ -1,3 +1,7 @@
+#if !defined( WIN32 )
+	#include <pebble.h>
+#endif
+
 #include "Object.h"
 #include "Memory.h"
 
