@@ -1,7 +1,7 @@
 #include <pebble.h>
 #include "Memory.h"
 #include "SceneManager.h"
-#include "SceneBase.h"
+#include "SceneTitle.h"
 
 static uint8_t		__heap[0x0400];
 
@@ -10,10 +10,10 @@ int main() {
 	APP_LOG( APP_LOG_LEVEL_INFO, "Initialised memory" );
 	
 	APP_LOG( APP_LOG_LEVEL_INFO, "Starting base scene" );
-	xiSceneBase_t * const sceneBase = SceneBase_Init( SceneBase_Alloc() );
-	if ( sceneBase ) {
-		SceneManager_Call( sceneBase );
-		Object_Release( sceneBase );
+	xiSceneTitle_t * const sceneTitle = SceneTitle_Init( SceneTitle_Alloc() );
+	if ( sceneTitle ) {
+		SceneManager_Call( sceneTitle );
+		Object_Release( sceneTitle );
 	}
 
 	app_event_loop();
