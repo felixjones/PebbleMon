@@ -29,11 +29,13 @@ static void Deinit() {
   window_destroy(window);
 }
 
-void main() {
+int main() {
 	Init();
 
 	APP_LOG(APP_LOG_LEVEL_DEBUG, "Done initializing, pushed watchface helloworld: %p", window);
 
 	app_event_loop();
 	Deinit();
+
+	return 1;
 }
